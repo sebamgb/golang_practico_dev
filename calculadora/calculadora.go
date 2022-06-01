@@ -1,4 +1,4 @@
-package main
+package calculadora
 
 import (
 	"bufio"
@@ -41,7 +41,7 @@ func readEntry() string {
 	return scanner.Text()
 }
 
-func main() {
+func Calc_main() {
 	entry := readEntry()
 	operator := readEntry()
 	c := calcu{}
