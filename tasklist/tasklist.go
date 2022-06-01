@@ -8,20 +8,20 @@ type task struct {
 	complete    bool
 }
 
-func (t task) chekComplete() {
+func (t *task) chekComplete() {
 	t.complete = true
 }
 
-func (t task) changeDescription(description string) {
+func (t *task) changeDescription(description string) {
 	t.description = description
 }
 
-func (t task) changeName(name string) {
+func (t *task) changeName(name string) {
 	t.name = name
 }
 
 func Tasklist_main() {
-	t := task{
+	t := &task{
 		name:        "completar curso",
 		description: "completar curso de golang esta semana",
 	}
