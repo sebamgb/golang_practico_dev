@@ -53,9 +53,26 @@ func Tasklist_main() {
 			t1, t2,
 		},
 	}
-	fmt.Println(list.tasks[0])
 	list.addToList(t3)
-	fmt.Println(len(list.tasks))
-	list.deleteToList(1)
-	fmt.Println(len(list.tasks))
+	// for i := 0; i < len(list.tasks); i++ {
+	// 	fmt.Println("index:", i, "descripcion:", list.tasks[i].description)
+	// }
+	// fmt.Println("---o---")
+	// for i, task := range list.tasks {
+	// 	fmt.Println("index:", i, "descripcion:", task.description)
+	// }
+
+	for i := 0; i < 10; i++ {
+		if i == 5 {
+			break
+		}
+		fmt.Println(i)
+	}
+
+	for i := 0; i < 10; i++ {
+		if i == 5 {
+			continue
+		}
+		fmt.Println(i)
+	}
 }
