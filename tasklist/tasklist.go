@@ -1,6 +1,8 @@
 package tasklist
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type task struct {
 	name        string
@@ -66,14 +68,38 @@ func Tasklist_main() {
 		description: "completar curso de java esta semana",
 	}
 
-	list := taskList{
+	list := &taskList{
 		tasks: []*task{
 			t1, t2,
 		},
 	}
 	list.addToList(t3)
-	list.printList()
+	// list.printList()
 	list.tasks[0].chekComplete()
-	println("Tareas completadas:")
-	list.printListCompleted()
+	// println("Tareas completadas:")
+	// list.printListCompleted()
+
+	taskMap := make(map[string]*taskList)
+	taskMap["Sebastián"] = list
+
+	t4 := &task{
+		name:        "completar curso",
+		description: "completar curso de plc esta semana",
+	}
+
+	t5 := &task{
+		name:        "completar curso",
+		description: "completar curso de logo esta semana",
+	}
+	list2 := &taskList{
+		tasks: []*task{
+			t4, t5,
+		},
+	}
+	taskMap["benjamin"] = list2
+
+	fmt.Println("Tareas de Sebastián:")
+	taskMap["Sebastián"].printList()
+	fmt.Println("Tareas de benjamin:")
+	taskMap["benjamin"].printList()
 }
