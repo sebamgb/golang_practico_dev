@@ -20,6 +20,24 @@ func (t *taskList) deleteToList(index int) {
 	t.tasks = append(t.tasks[:index], t.tasks[index+1:]...)
 }
 
+func (t *taskList) printList() {
+	for _, task := range t.tasks {
+		fmt.Println("Nombre:", task.name)
+		fmt.Println("Descripción:", task.description)
+		fmt.Println("+-------------------------------+")
+	}
+}
+
+func (t *taskList) printListCompleted() {
+	for _, task := range t.tasks {
+		if task.complete {
+			fmt.Println("Nombre:", task.name)
+			fmt.Println("Descripción:", task.description)
+			fmt.Println("+-------------------------------+")
+		}
+	}
+}
+
 func (t *task) chekComplete() {
 	t.complete = true
 }
@@ -54,25 +72,8 @@ func Tasklist_main() {
 		},
 	}
 	list.addToList(t3)
-	// for i := 0; i < len(list.tasks); i++ {
-	// 	fmt.Println("index:", i, "descripcion:", list.tasks[i].description)
-	// }
-	// fmt.Println("---o---")
-	// for i, task := range list.tasks {
-	// 	fmt.Println("index:", i, "descripcion:", task.description)
-	// }
-
-	for i := 0; i < 10; i++ {
-		if i == 5 {
-			break
-		}
-		fmt.Println(i)
-	}
-
-	for i := 0; i < 10; i++ {
-		if i == 5 {
-			continue
-		}
-		fmt.Println(i)
-	}
+	list.printList()
+	list.tasks[0].chekComplete()
+	println("Tareas completadas:")
+	list.printListCompleted()
 }
