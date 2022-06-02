@@ -8,6 +8,18 @@ type task struct {
 	complete    bool
 }
 
+type taskList struct {
+	tasks []*task
+}
+
+func (t *taskList) addToList(tl *task) {
+	t.tasks = append(t.tasks, tl)
+}
+
+func (t *taskList) deleteToList(index int) {
+	t.tasks = append(t.tasks[:index], t.tasks[index+1:]...)
+}
+
 func (t *task) chekComplete() {
 	t.complete = true
 }
@@ -21,17 +33,29 @@ func (t *task) changeName(name string) {
 }
 
 func Tasklist_main() {
-	t := &task{
+	t1 := &task{
 		name:        "completar curso",
 		description: "completar curso de golang esta semana",
 	}
 
-	fmt.Println(t)
+	t2 := &task{
+		name:        "completar curso",
+		description: "completar curso de python esta semana",
+	}
 
-	fmt.Printf("%+v\n", t)
+	t3 := &task{
+		name:        "completar curso",
+		description: "completar curso de java esta semana",
+	}
 
-	t.chekComplete()
-	t.changeName("finalizar curso")
-	t.changeDescription("finalizar curso practico de golang cuanto antes")
-	fmt.Printf("%+v\n", t)
+	list := taskList{
+		tasks: []*task{
+			t1, t2,
+		},
+	}
+	fmt.Println(list.tasks[0])
+	list.addToList(t3)
+	fmt.Println(len(list.tasks))
+	list.deleteToList(1)
+	fmt.Println(len(list.tasks))
 }
