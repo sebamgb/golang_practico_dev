@@ -32,7 +32,7 @@ func moveBird(b bird) {
 	b.fly()
 }
 
-func main() {
+func NoInterfaces_main() {
 	d := dog{}
 	moveDog(d)
 	f := fish{}

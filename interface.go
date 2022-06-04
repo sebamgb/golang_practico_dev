@@ -6,12 +6,6 @@ type animal interface {
 	move() string
 }
 
-type dog struct{}
-
-type fish struct{}
-
-type bird struct{}
-
 func (dog) move() string {
 	return "Soy un perro y estoy caminando"
 }
@@ -28,7 +22,7 @@ func moveAnimal(a animal) {
 	fmt.Println(a.move())
 }
 
-func main() {
+func Interfaces_main() {
 	d := dog{}
 	moveAnimal(d)
 	f := fish{}

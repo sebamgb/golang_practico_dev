@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func Apuntadores_main() {
 	x := 25
 	fmt.Println(x)
 	fmt.Println(&x)
@@ -10,7 +10,8 @@ func main() {
 	fmt.Println(y)
 	fmt.Println(*y)
 }
-func changeValue(a int) {
-	fmt.Println(&a)
-	a = 40
-}
+
+// func changeValue(a int) {
+// 	fmt.Println(&a)
+// 	a = 40
+// }
