@@ -14,6 +14,13 @@ func NewServer(port string) *Server {
 	}
 }
 
+func (s *Server) AddMiddleware(f http.HandlerFunc, middleawares ...Middleware) http.HandlerFunc {
+	for _, m := range middleawares {
+		f = m(f)
+	}
+	return f
+}
+
 func (s *Server) Handle(path string, handler http.HandlerFunc) {
 	s.router.rules[path] = handler
 }
