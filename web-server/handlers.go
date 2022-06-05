@@ -3,6 +3,7 @@ package webserver
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 )
 
@@ -23,4 +24,22 @@ func PostRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	fmt.Fprintf(w, "Payload %v\n", metadata)
+}
+
+func UserPostRequest(w http.ResponseWriter, r *http.Request) {
+	decoder := json.NewDecoder(r.Body)
+	var user User
+	err := decoder.Decode(&user)
+	if err != nil {
+		fmt.Fprintf(w, "error: %v", err)
+		return
+	}
+	response, err := user.ToJson()
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	w.Header().Set("content-type", "aplication/json")
+	log.Println(user.Name)
+	w.Write(response)
 }
