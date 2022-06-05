@@ -13,7 +13,7 @@ func (writerWeb) Write(p []byte) (int, error) {
 	return len(p), nil
 }
 
-func main() {
+func Web_main() {
 	request, err := http.Get("http://sebamgb.github.io")
 	if err != nil {
 		fmt.Println(err)

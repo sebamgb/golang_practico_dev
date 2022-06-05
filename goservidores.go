@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func main() {
+func GoServidores_main() {
 	initTime := time.Now()
 	channel := make(chan string)
 	servers := []string{
@@ -21,7 +21,7 @@ func main() {
 			break
 		}
 		for _, server := range servers {
-			go chekServer(server, channel)
+			go ChekServer(server, channel)
 		}
 		time.Sleep(1 * time.Second)
 		fmt.Println(<-channel)
@@ -36,7 +36,7 @@ func main() {
 	fmt.Printf("run time: %s\n", endTime)
 }
 
-func chekServer(server string, c chan string) {
+func ChekServer(server string, c chan string) {
 	_, err := http.Get(server)
 	if err != nil {
 		fmt.Println(server, "does not work")

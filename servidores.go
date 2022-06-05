@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func main() {
+func Servidores_main() {
 	initTime := time.Now()
 	servers := []string{
 		"http://platzi.com",
