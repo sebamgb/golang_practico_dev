@@ -8,7 +8,12 @@ import (
 )
 
 func HandleRoot(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "hola mundo")
+	query, exists := r.URL.Query()["nombre"]
+	if !exists || len(query) <= 0{
+		fmt.Fprintf(w, "no proporcionas nombre??")
+	} else {
+		fmt.Fprintf(w, "hola, "+query[0])
+	}
 }
 
 func HandleApi(w http.ResponseWriter, r *http.Request) {
